@@ -72,6 +72,8 @@ $ npm run docker:down
 
 ## Author
 
+## Config author: sangtrandev
+
 👤 **Anil Ahir**
 
 - Twitter: [@anilahir220](https://twitter.com/anilahir220)
