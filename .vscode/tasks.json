@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "type": "docker-run",
+      "label": "docker-run: debug",
+      "dependsOn": ["docker-build"],
+      "dockerRun": {
+        "command": "nest start --debug 0.0.0.0:9229"
+      },
+      "node": {
+        "enableDebugging": true
+      }
+    }
+  ]
+}
