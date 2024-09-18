@@ -1,3 +1,4 @@
+version: '3.4'
 services:
   nestjs-auth-api:
     container_name: nestjs-auth-api
@@ -6,15 +7,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: development # Only will build development stage from our dockerfile
+      target: development
     volumes:
       - ./:/usr/src/app
     ports:
       - ${PORT}:${PORT}
+      - "9229:9229"  # Expose the debugging port
     networks:
       - nestjs-auth-intranet
     env_file: 
-      - .env # Available inside container not in compose file
+      - .env
     environment:
       - DB_HOST=nestjs-auth-mysql
       - REDIS_HOST=nestjs-auth-redis
@@ -23,7 +25,7 @@ services:
         condition: service_healthy
       nestjs-auth-redis:
         condition: service_healthy
-    command: npm run start:dev # Run in development mode
+    command: npm run start:debug:docker  # Change to run in debug mode
 
   nestjs-auth-mysql:
     container_name: nestjs-auth-mysql
@@ -32,15 +34,12 @@ services:
     volumes:
       - mysql:/var/lib/mysql
     ports:
-      - 3306:${DB_PORT}
+      - 3307:${DB_PORT}
     networks:
       - nestjs-auth-intranet
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
-      # MYSQL_USER: ${DB_USER}
-      # MYSQL_PASSWORD: ${DB_PASSWORD}
-      TZ: 'utc'
     command: --default-authentication-plugin=mysql_native_password
     healthcheck:
       test: ['CMD', 'mysqladmin', '-u${DB_USER}', '-p${DB_PASSWORD}', 'ping']
@@ -52,25 +51,3 @@ services:
     container_name: nestjs-auth-redis
     image: redis:alpine
     restart: unless-stopped
-    volumes:
-      - redis:/data
-    ports:
-      - 6379:${REDIS_PORT}
-    networks:
-      - nestjs-auth-intranet
-    healthcheck:
-      test: ['CMD', 'redis-cli', 'ping']
-      interval: 5s
-      retries: 3
-      timeout: 3s
-
-volumes:
-  mysql:
-    name: nestjs-auth-mysql
-  redis:
-    name: nestjs-auth-redis
-
-networks:
-  nestjs-auth-intranet:
-    name: nestjs-auth-intranet
-    driver: bridge

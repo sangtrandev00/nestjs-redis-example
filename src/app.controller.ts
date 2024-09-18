@@ -6,7 +6,7 @@ import { Public } from './common/decorators/public.decorator';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @ApiOkResponse({ description: "Returns 'Hello World'" })
   @Public()
@@ -14,4 +14,7 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+
+
 }

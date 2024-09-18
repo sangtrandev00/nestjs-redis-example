@@ -15,6 +15,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import redisConfig from './common/config/redis.config';
 import { RedisModule } from './redis/redis.module';
 import swaggerConfig from './common/config/swagger.config';
+import { RateLimitModule } from './rate-limit/rate-limit.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import swaggerConfig from './common/config/swagger.config';
     RedisModule,
     AuthModule,
     UsersModule,
+    RateLimitModule
   ],
   controllers: [AppController],
   providers: [
@@ -37,4 +39,4 @@ import swaggerConfig from './common/config/swagger.config';
     },
   ],
 })
-export class AppModule {}
+export class AppModule { }

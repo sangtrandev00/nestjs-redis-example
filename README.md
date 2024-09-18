@@ -1,4 +1,4 @@
-# NestJS Authentication
+# NestJS Authentication (Redis Focus)
 
 ![Workflow Test](https://github.com/anilahir/nestjs-authentication-and-authorization/actions/workflows/ci.yml/badge.svg)
 ![Prettier](https://img.shields.io/badge/Code%20style-prettier-informational?logo=prettier&logoColor=white)

@@ -13,7 +13,7 @@ import { UsersService } from './users.service';
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiOkResponse({ description: "Get logged in user's details", type: User })
@@ -21,5 +21,10 @@ export class UsersController {
   @Get('me')
   async getMe(@ActiveUser('id') userId: string): Promise<User> {
     return this.usersService.getMe(userId);
+  }
+
+  @Get('test-cache')
+  async testCache() {
+    return this.usersService.testCache();
   }
 }

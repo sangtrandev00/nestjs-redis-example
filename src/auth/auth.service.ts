@@ -18,7 +18,10 @@ import { User } from '../users/entities/user.entity';
 import { BcryptService } from './bcrypt.service';
 import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
-
+// Làm sao để thấy server data thật của redis ở đâu
+// Khi nào thì nên sài redis ?
+// Áp dụng vào dự án mình có được hay không ?
+// 1 Server redis cache tối đa được bao nhiêu ?
 @Injectable()
 export class AuthService {
   constructor(
@@ -29,7 +32,7 @@ export class AuthService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
     private readonly redisService: RedisService,
-  ) {}
+  ) { }
 
   async signUp(signUpDto: SignUpDto): Promise<void> {
     const { email, password } = signUpDto;
@@ -79,7 +82,7 @@ export class AuthService {
   ): Promise<{ accessToken: string }> {
     const tokenId = randomUUID();
 
-    await this.redisService.insert(`user-${user.id}`, tokenId);
+    const inserted = await this.redisService.insert(`user-${user.id}`, tokenId);
 
     const accessToken = await this.jwtService.signAsync(
       {

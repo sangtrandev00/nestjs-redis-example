@@ -23,13 +23,16 @@ export class JwtAuthGuard implements CanActivate {
     private readonly jwtService: JwtService,
     private readonly redisService: RedisService,
     private reflector: Reflector,
-  ) {}
+  ) { }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
       context.getHandler(),
       context.getClass(),
     ]);
+
+    console.log('context', context);
+
     if (isPublic) {
       return true;
     }
@@ -56,6 +59,8 @@ export class JwtAuthGuard implements CanActivate {
 
       request[REQUEST_USER_KEY] = payload;
     } catch (error) {
+      console.log('error', error);
+
       throw new UnauthorizedException(error.message);
     }
 
