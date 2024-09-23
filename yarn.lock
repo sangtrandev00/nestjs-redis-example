@@ -864,10 +864,10 @@
     webpack "5.94.0"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@^10.4.3":
-  version "10.4.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-10.4.3.tgz#b9059313d928aea335a4a185a621e32c1858c845"
-  integrity sha512-4hbLd3XIJubHSylYd/1WSi4VQvG68KM/ECYpMDqA3k3J1/T17SAg40sDoq3ZoO5OZgU0xuNyjuISdOTjs11qVg==
+"@nestjs/common@^10.4.4":
+  version "10.4.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-10.4.4.tgz#673d0eca273e1ab3a4d3ec9e212114b9f4fbf6e8"
+  integrity sha512-0j2/zqRw9nvHV1GKTktER8B/hIC/Z8CYFjN/ZqUuvwayCH+jZZBhCR2oRyuvLTXdnlSmtCAg2xvQ0ULqQvzqhA==
   dependencies:
     uid "2.0.2"
     iterare "1.2.1"
@@ -6182,15 +6182,10 @@ tsconfig-paths@4.2.0, tsconfig-paths@^4.1.2:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@2.7.0:
+tslib@2.7.0, tslib@^2.1.0, tslib@^2.5.0, tslib@^2.6.2:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.7.0.tgz#d9b40c5c40ab59e8738f297df3087bf1a2690c01"
   integrity sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==
-
-tslib@^2.1.0, tslib@^2.5.0, tslib@^2.6.2:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
-  integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
